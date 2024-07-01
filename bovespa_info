@@ -1,0 +1,36 @@
+Considerando o dataset detalhado a seguir, extraia o conjunto de informações solicitadas.
+Dataset dados da BOVESPA
+
+    Arquivo disponível em /home/dados/bovespa/bovespa.csv
+    Dados relativos a bovespa, a bolsa de valores no Brasil
+    ~1.3GB
+    8.1M de instâncias
+
+| # | Nome do campo | Descrição | |---- |--------------------------------------------------------------------------- |---------------------------------------------------------------------------------- | | 0 | RegisterType | Fixo '1' | | 1 | TradingDate | Data do pregão | | 2 | BDICode | Utilizado para classificar os papéis na emissão do boletim diário de informações | | 3 | NegociationCode | Codigo de negociação do papel | | 4 | MarketType | Cód. Do mercado em que o papel está cadastrado | | 5 | TradeName | Nome resumido da empresa emissora do papel | | 6 | Specification | Especificação do Papel | | 7 | ForwardMarketTermInDays | Prazo em dias do mercado a termo | | 8 | Currency | Moeda de referência | | 9 | OpeningPrice | Preço de abertura do papel no pregão | | 10 | MaxPrice | Preço máximo do papel no pregão | | 11 | MinPrice | Preço mínimo do papel no pregão | | 12 | MeanPrice | Preço médio do papel no pregão | | 13 | LastTradePrice | Preço do último negócio do papel no pregão | | 14 | BestPurshaseOrderPrice | Preço da melhor oferta de compra do papel no mercado | | 15 | BestPurshaseSalePrice | Preço da melhor oferta de venda do papel no mercado | | 16 | NumborOfTrades | Número de negócios efetuados com o papel no pregão | | 17 | NumberOfTradedStocks | Quantidade total de títulos negociados neste papel | | 18 | VolumeOfTradedStocks | Volume total de títulos negociados neste papel | | 19 | PriceForOptionsMarketOrSecondaryTermMarket | Preço de exercício para o mercado de opções ou valor do contrato para o mercado | | 20 | PriceCorrectionsForOptionsMarketOrSecondaryTermMarket | Indicador de correção de preços de exercícios ou valores de contrato | | 21 | DueDateForOptionsMarketOrSecondaryTermMarket | Data do vencimento para os mercados de opções | | 22 | FactorOfPaperQuotatuion | Fator de cotação do papel | | 23 | PointsInPriceForOptionsMarketReferencedInDollarOrSecondaryTerm | Preço de exercício em pontos para opções referenciadas em dólar | | 24 | ISINOrInternCode | Código do papel no sistema ISIN | | 25 | DistributionNumber | Número de distribuição do papel |
+
+Informações a serem extraídas:
+
+    Quantidade de dias com operações da PETR4 (NegociationCode)
+    Maior valor (MaxPrice) histórico por ação (NegociationCode)
+    Maior valor (MaxPrice) histórico da PETR4 (NegociationCode)
+    Dia ('TradingDate') com a maior quantidade de papeis (NegociationCode) operados
+    Dia ('TradingDate') da semana com a maior quantidade de papeis (NegociationCode) operados
+    Maior lucro histórico de um papel (NegociationCode) na bovespa (MaxPrice - OpeningPrice)
+    Maior prejuizo histórico de um papel (NegociationCode) na bovespa (OpeningPrice - LastTradePrice)
+    Moeda (Currency) com mais operações
+    Papel (NegociationCode) operado em CZ (Currency) com maior quantidade de operações
+    Papel (NegociationCode) operado em CZ (Currency) com maior valor médio das operações (MeanPrice)
+    Media do preço médio (MeanPrice), mínimo (MinPrice) e máximo (MaxPrice) anual (TradingDate) das ações da PETR4 (NegociationCode)
+    Preço médio (MeanPrice) anual (TradingDate) das ações da PETR4 (NegociationCode)
+    Preço médio (MeanPrice) anual (TradingDate) das 10 ações (NegociationCode) com mais operações na bovespa
+    Desvio Padrão anual do preço médio (MeanPrice) da ação da PETR4 (NegociationCode)
+    Desvio Padrão anual do preço médio (MeanPrice) das 10 ações (NegociationCode) com mais operações na bovespa
+    Preço médio (MeanPrice) anual (TradingDate) das ações (NegociationCode) com a maior quantidade de operações de acordo com a moeda (Currency)
+
+Dicas:
+
+    Crie uma célula (Insert -> Insert Cell Below) para cada informação solicitada
+    A análise deve ser feita sobre os dados do HDFS
+    Inicialize o seu cluster executando o script em: Desktop/ambientes/spark/inicializar.sh
+    Acesse o seu cluster executando o script em: Desktop/ambientes/spark/abrir_navegador.sh
+
